@@ -1,6 +1,7 @@
 package masters.android.greystones;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +21,7 @@ public class WelcomePage extends Activity implements View.OnClickListener {
         final Button weather = (Button) findViewById(R.id.weather);
         weather.setOnClickListener(this);
 
-        final Button restaurants = (Button) findViewById(R.id.restaurants);
+        final Button restaurants = (Button) findViewById(R.id.dining);
         restaurants.setOnClickListener(this);
 
         final Button directions = (Button) findViewById(R.id.directions);
@@ -30,9 +31,10 @@ public class WelcomePage extends Activity implements View.OnClickListener {
     }
 
     public void onClick(View view) {
-	   	 Intent speak = new Intent(this,SpeakFruit.class);
+	   	 Intent forecast = new Intent(this,WeatherForecast.class);
 
-	   	 speak.putExtra("fruitName", fruitName);
+	 //  	 speak.putExtra("fruitName", fruitName);
 
-	     startActivity(speak);      }
+	     startActivity(forecast);
+	}
 }
