@@ -18,6 +18,6 @@ public class WeatherForecast extends Activity {
         WebView webview;
         webview = (WebView) findViewById(R.id.webview);
         webview.getSettings().setJavaScriptEnabled(true);
-        webview.loadUrl("http://m.yr.no/place/Ireland/Wicklow/Greystones/hour_by_hour.html");
+        webview.loadUrl("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
     }
 }
