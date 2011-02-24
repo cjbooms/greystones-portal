@@ -35,13 +35,13 @@ public class TabbedForecasts extends TabActivity {
 
         // Do the same for the other tabs
         intent = new Intent().setClass(this, WeatherForecast.class);
-        spec = tabHost.newTabSpec("tomorrow").setIndicator("tomorrow",
+        spec = tabHost.newTabSpec("tomorrow").setIndicator("Tomorrow",
                           res.getDrawable(R.drawable.weather_tabs))
                       .setContent(intent);
         tabHost.addTab(spec);
 
         intent = new Intent().setClass(this, WeatherForecast.class);
-        spec = tabHost.newTabSpec("5dat").setIndicator("5dat",
+        spec = tabHost.newTabSpec("long").setIndicator("Long",
                           res.getDrawable(R.drawable.weather_tabs))
                       .setContent(intent);
         tabHost.addTab(spec);
