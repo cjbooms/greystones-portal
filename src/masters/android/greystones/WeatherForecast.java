@@ -1,6 +1,7 @@
 package masters.android.greystones;
 
 import android.app.Activity;
+
 import android.os.Bundle;
 import android.webkit.WebView;
 
@@ -14,10 +15,17 @@ import android.webkit.WebView;
 public class WeatherForecast extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.weatherforecast);
+
+		WebView browser=new WebView(this);
+		setContentView(browser);
+		browser.loadUrl("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
+
+
+  /*     setContentView(R.layout.weatherforecast);
         WebView webview;
         webview = (WebView) findViewById(R.id.webview);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.loadUrl("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
+        */
     }
 }

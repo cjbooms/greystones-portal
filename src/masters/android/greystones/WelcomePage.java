@@ -31,10 +31,12 @@ public class WelcomePage extends Activity implements View.OnClickListener {
     }
 
     public void onClick(View view) {
-	   	 Intent forecast = new Intent(this,WeatherForecast.class);
+	   	 Intent forecasts = new Intent(this,TabbedForecasts.class);
+       //  Intent forecasts = new Intent(this,WeatherForecast.class);
+
 
 	 //  	 speak.putExtra("fruitName", fruitName);
 
-	     startActivity(forecast);
+	     startActivity(forecasts);
 	}
 }

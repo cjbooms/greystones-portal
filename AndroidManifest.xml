@@ -10,5 +10,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".WeatherForecast"/>
+        <activity android:name=".TabbedForecasts" android:theme="@android:style/Theme.NoTitleBar"/>
     </application>
 </manifest>
