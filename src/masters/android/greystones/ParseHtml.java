@@ -1,5 +1,6 @@
 package masters.android.greystones;
 
+import com.sun.org.apache.xml.internal.serialize.HTMLSerializer;
 import org.htmlcleaner.*;
 
 import java.io.IOException;
@@ -17,11 +18,19 @@ import java.net.URL;
  */
 public class ParseHtml {
 
-// create an instance of HtmlCleaner
-HtmlCleaner cleaner = new HtmlCleaner();
+    HtmlCleaner cleaner;
+    CleanerProperties props;
 
-// take default cleaner properties
-CleanerProperties props = cleaner.getProperties();
+
+    public ParseHtml() {
+        // create an instance of HtmlCleaner
+        cleaner = new HtmlCleaner();
+
+        // take default cleaner properties
+        props = cleaner.getProperties();
+    }
+
+
 
 // customize cleaner's behaviour with property setters
 //props.setXXX(...);
@@ -33,21 +42,28 @@ CleanerProperties props = cleaner.getProperties();
     public String ParseHtml(String forecast){
 
         // Create Weather URL from passed forecast type. i.e today's / tomorrow's etc
-        String webPage = "http://m.yr.no/place/Ireland/Wicklow/Greystones/hour_by_hour.html" + forecast + ".html";
-
+       // String webPage = "http://m.yr.no/place/Ireland/Wicklow/Greystones/hour_by_hour.html" + forecast + ".html";
+        String returnValue = " ";
         try {
-            URL url = new URL(webPage);
+            URL url = new URL(forecast);
             TagNode node = cleaner.clean(url);
+            Object[] all_nodes = node.evaluateXPath("//table");
 
-            Object[] weather_table = node.evaluateXPath("//table");
-            weather_table.toString();
-         //   new SimpleHtmlSerializer(props).writeToFile(weather_table,"/home/conor/Desktop/test.html");;
+            TagNode weather_table_node = (TagNode) all_nodes[0];
+
+            returnValue = new SimpleHtmlSerializer(props).getAsString(weather_table_node);
+            return returnValue;
+
+
+
+
+
         }
         catch (MalformedURLException e) {}
         catch (IOException e){}
         catch (XPatherException e){}
 
-        return "Hello";
+        return returnValue;
 }
 
 /*

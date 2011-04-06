@@ -16,10 +16,19 @@ public class WeatherForecast extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ParseHtml parseHtml = new ParseHtml();
+
 		WebView browser=new WebView(this);
 		setContentView(browser);
-		browser.loadUrl("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
+		//browser.loadUrl("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
 
+        //String tabularData = parseHtml.ParseHtml("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
+        String tabularData = parseHtml.ParseHtml(" http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour_tomorrow.html");
+        browser.loadData(tabularData, "text/html", "utf-8");
+
+
+
+        //browser.loadData();
 
   /*     setContentView(R.layout.weatherforecast);
         WebView webview;
