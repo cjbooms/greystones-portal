@@ -6,6 +6,12 @@
       android:orientation="horizontal"
       android:background="@drawable/greystones"
 >
+
+   <ListView android:id="@android:id/list"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+        />
+
   <!--     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
@@ -15,7 +21,7 @@
         android:gravity="top">
     </FrameLayout>      android:src="@drawable/greystones" -->
 
- 	<LinearLayout
+ <!--	<LinearLayout
             android:orientation="horizontal"
             android:layout_weight="0"
             android:background="#AA000000"
@@ -35,5 +41,5 @@
                 style="@style/Button"
                 android:id="@+id/directions"
                 android:background="@drawable/car_button"/>
-	</LinearLayout>
+	</LinearLayout>               -->
 </LinearLayout>

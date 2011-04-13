@@ -13,17 +13,29 @@ import android.webkit.WebView;
  * To change this template use File | Settings | File Templates.
  */
 public class WeatherForecast extends Activity {
+
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        String url =" ";
+        // Create HTML Parser, used to filter content
         ParseHtml parseHtml = new ParseHtml();
 
 		WebView browser=new WebView(this);
 		setContentView(browser);
 		//browser.loadUrl("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
 
+        // Get Fruit Array Position and set fruit variables
+		Bundle extras = getIntent().getExtras();
+		if(extras !=null)
+		{
+			url = extras.getString("forecast");
+		}
+
+
         //String tabularData = parseHtml.ParseHtml("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
-        String tabularData = parseHtml.ParseHtml(" http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour_tomorrow.html");
+        String tabularData = parseHtml.ParseHtml(url);
         browser.loadData(tabularData, "text/html", "utf-8");
 
 

@@ -22,31 +22,31 @@ public class TabbedForecasts extends TabActivity {
        Resources res = getResources(); // Resource object to get Drawables
         TabHost tabHost = getTabHost();  // The activity TabHost
         TabHost.TabSpec spec;  // Resusable TabSpec for each tab
-        Intent intent;  // Reusable Intent for each tab
+
 
         // Create an Intent to launch an Activity for the tab (to be reused)
-        intent = new Intent().setClass(this, WeatherForecast.class);
+        Intent intent = new Intent().setClass(this, WeatherForecast.class);
 
         // Initialize a TabSpec for each tab and add it to the TabHost
         spec = tabHost.newTabSpec("today").setIndicator("Today",
                           res.getDrawable(R.drawable.weather_tabs))
-                      .setContent(intent);
+                      .setContent(intent.putExtra("forecast","http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html"));
         tabHost.addTab(spec);
 
         // Do the same for the other tabs
         intent = new Intent().setClass(this, WeatherForecast.class);
         spec = tabHost.newTabSpec("tomorrow").setIndicator("Tomorrow",
                           res.getDrawable(R.drawable.weather_tabs))
-                      .setContent(intent);
+                      .setContent(intent.putExtra("forecast","http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour_tomorrow.html"));
         tabHost.addTab(spec);
 
         intent = new Intent().setClass(this, WeatherForecast.class);
-        spec = tabHost.newTabSpec("long").setIndicator("Long",
+        spec = tabHost.newTabSpec("long").setIndicator("Long Term Outlook",
                           res.getDrawable(R.drawable.weather_tabs))
-                      .setContent(intent);
+                .setContent(intent.putExtra("forecast","http://m.yr.no/place/Ireland/Leinster/Greystones/long.html"));
         tabHost.addTab(spec);
 
-        tabHost.setCurrentTab(2);
+        tabHost.setCurrentTab(0);
 
     }
 }

@@ -2,4 +2,11 @@
 <resources>
     <string name="welcome">Welcome to Greystones!</string>
     <string name="app_name">Greystones Village App</string>
+    <string-array name="homepage_menu">
+        <item>Promotional Video</item>
+        <item>Restaurants</item>
+        <item>Sport</item>
+        <item>Weather Forecast</item>
+        <item>Transport</item>
+    </string-array>
 </resources>
