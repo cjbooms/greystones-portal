@@ -49,13 +49,17 @@ public class ParseHtml {
             TagNode node = cleaner.clean(url);
             Object[] all_nodes = node.evaluateXPath("//table");
 
-            TagNode weather_table_node = (TagNode) all_nodes[0];
+            if (all_nodes.length > 0){
+                TagNode weather_table_node = (TagNode) all_nodes[0];
 
-            returnValue = new SimpleHtmlSerializer(props).getAsString(weather_table_node);
+                returnValue = new SimpleHtmlSerializer(props).getAsString(weather_table_node);
+
+            }
+            else{
+               returnValue = "Forecasting for today is over";
+            }
+
             return returnValue;
-
-
-
 
 
         }
