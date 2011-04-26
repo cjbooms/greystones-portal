@@ -1,8 +1,15 @@
 package masters.android.greystones;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.WebView;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,8 +26,7 @@ public class PromotionalVideo extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-
-		setContentView(R.layout.promotionalvideo);
+    	setContentView(R.layout.promotionalvideo);
 		browser=(WebView)findViewById(R.id.promovideo);
 
         browser.getSettings().setPluginsEnabled(true);
@@ -33,4 +39,7 @@ public class PromotionalVideo extends Activity {
 
 
 	}
+
+
+
 }

@@ -2,12 +2,17 @@ package masters.android.greystones;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -42,15 +47,24 @@ public class WelcomePage extends Activity implements View.OnClickListener, Adapt
 	     startActivity(forecasts);
 	}
 
+
+
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
        //  Intent forecasts = new Intent(this,WeatherForecast.class);
 
-         switch (position) {
-             case 0: startActivity(new Intent(this,PromotionalVideo.class));
-                 break;
+        switch (position) {
+            // Launch Promotional Video in Youtube if present, otherwise use HTML5 embeded video
+            case 0:
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:Sb9OvofxTzM"));
+                List<ResolveInfo> list = getPackageManager().queryIntentActivities(i, PackageManager.MATCH_DEFAULT_ONLY);
+                if (list.size() == 0) {
+                    i = new Intent(this,PromotionalVideo.class);
+                }
+                startActivity(i);
+                break;
              case 1: startActivity(new Intent(this,TabbedForecasts.class));
-                 break;
+                break;
              case 2: startActivity(new Intent(this,TabbedForecasts.class));
                  break;
              case 3: startActivity(new Intent(this,TabbedForecasts.class));
