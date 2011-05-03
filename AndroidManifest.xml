@@ -3,7 +3,8 @@
           package="masters.android.greystones">
     <uses-permission android:name="android.permission.INTERNET" />
     <application android:icon="@drawable/icon" android:label="Greystones Portal" android:debuggable="true" android:theme="@android:style/Theme">
-        <activity android:name=".WelcomePage"  android:screenOrientation="sensor">
+        <uses-library android:name="com.google.android.maps" />
+        <activity android:name=".HomePage"  android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -13,5 +14,6 @@
         <activity android:name=".TabbedForecasts"/>
         <activity android:name=".PromotionalVideo"/>
         <activity android:name=".Restaurants"/>
+        <activity android:name=".InteractiveMap"/>
     </application>
 </manifest>
