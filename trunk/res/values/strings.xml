@@ -9,4 +9,16 @@
         <item>Weather Forecast</item>
         <item>Transport</item>
     </string-array>
+    <string-array name="restaurant_names">
+        <item>The Three Q\'s</item>
+        <item>The Hungry Monk</item>
+    </string-array>
+    <string-array name="restaurant_numbers">
+        <item>012871111</item>
+        <item>012871111</item>
+    </string-array>
+    <string-array name="restaurant_websites">
+        <item>www.google.com</item>
+        <item>www.nytimes.com</item>
+    </string-array>
 </resources>
