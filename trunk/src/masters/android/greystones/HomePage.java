@@ -23,7 +23,7 @@ import java.util.List;
  * Time: 22:17
  * To change this template use File | Settings | File Templates.
  */
-public class WelcomePage extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class HomePage extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
@@ -48,7 +48,6 @@ public class WelcomePage extends Activity implements View.OnClickListener, Adapt
 
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
-       //  Intent forecasts = new Intent(this,WeatherForecast.class);
 
         switch (position) {
             // Launch Promotional Video in Youtube if present, otherwise use HTML5 embeded video
@@ -66,7 +65,7 @@ public class WelcomePage extends Activity implements View.OnClickListener, Adapt
                  break;
              case 3: startActivity(new Intent(this,TabbedForecasts.class));
                  break;
-             case 4: startActivity(new Intent(this,TabbedForecasts.class));
+             case 4: startActivity(new Intent(this,InteractiveMap.class));
                  break;
          }
     }
