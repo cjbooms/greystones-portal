@@ -24,10 +24,10 @@ public class InteractiveMap extends MapActivity {
         mapView.setBuiltInZoomControls(true);
 
         List<Overlay> mapOverlays = mapView.getOverlays();
-        Drawable drawable = this.getResources().getDrawable(R.drawable.car);
+        Drawable drawable = this.getResources().getDrawable(R.drawable.drink);
         GreystonesAttractionsOverlay attractionsOverlay = new GreystonesAttractionsOverlay(drawable, this);
 
-        GeoPoint point = new GeoPoint(19240000,-99120000);
+        GeoPoint point = new GeoPoint(53144809, -6062994);
         OverlayItem overlayitem = new OverlayItem(point, "Hola, Mundo!", "I'm in Mexico City!");
 
         attractionsOverlay.addOverlay(overlayitem);

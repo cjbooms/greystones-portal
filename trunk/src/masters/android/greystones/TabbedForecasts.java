@@ -23,7 +23,6 @@ public class TabbedForecasts extends TabActivity {
         TabHost tabHost = getTabHost();  // The activity TabHost
         TabHost.TabSpec spec;  // Resusable TabSpec for each tab
 
-
         // Create an Intent to launch an Activity for the tab (to be reused)
         Intent intent = new Intent().setClass(this, WeatherForecast.class);
 

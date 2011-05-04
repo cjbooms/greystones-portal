@@ -3,8 +3,6 @@ package masters.android.greystones;
 import android.app.ListActivity;
 import android.database.MatrixCursor;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 /**
@@ -16,49 +14,81 @@ import android.widget.SimpleCursorAdapter;
  */
 public class Restaurants extends ListActivity {
 
-		  // Create Restaurants Array
-		  private String[] restaurantNames;
-		  // Create Restaurants Array
-		  private String[] restaurantEmail;
-		  // Create Restaurants Array
-		  private String[] restaurantPhone;
-		  // Create Restaurants Array
-		  private String[] restaurantWebsite;
+    /**
+     * Restaurant Names
+     */
+    private String[] restaurantNames;
 
-		  @Override
-		  public void onCreate(Bundle savedInstanceState) {
-		    super.onCreate(savedInstanceState);
+    /**
+     * Restaurant Phone Numbers
+     */
+    private String[] restaurantPhone;
+
+    /**
+     * Restaurant Websites
+     */
+    private String[] restaurantWebsite;
+
+    /**
+     * Cursor to Hold Restaurants
+     */
+    private  MatrixCursor restaurantsCursor;
 
 
-		    setContentView(R.layout.restaurants);
-            fillData();
-          }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    private void fillData() {
-        String[] matrixCols = new String[] {"_id", "name", "website", "phone" };
-        String[] menuCols = new String[] {"name", "website", "phone" };
-        int[] to = new int[] { R.id.contact_name, R.id.contact_website, R.id.contact_number };
-
-        MatrixCursor menuCursor = new MatrixCursor(matrixCols);
-        startManagingCursor(menuCursor);
-
-        menuCursor = addRowsFromXMLStrings(menuCursor);
-
-        SimpleCursorAdapter menuItems = new SimpleCursorAdapter(
-                    this, R.layout.restaurant_row, menuCursor, menuCols, to);
-
-        setListAdapter(menuItems);
-    }
-
-    private MatrixCursor addRowsFromXMLStrings(MatrixCursor cursor) {
-	    restaurantNames = getResources().getStringArray(R.array.restaurant_names);
+        restaurantNames = getResources().getStringArray(R.array.restaurant_names);
         restaurantPhone = getResources().getStringArray(R.array.restaurant_numbers);
         restaurantWebsite = getResources().getStringArray(R.array.restaurant_websites);
-        for (int key = 0; key < restaurantNames.length; key ++ ){
 
-                    cursor.addRow(new Object[] { key, restaurantNames[key], restaurantWebsite[key], restaurantPhone[key]});
+        setContentView(R.layout.restaurant_tabs);
+
+        createAndPopulateRestaurantsList();
+    }
+
+
+    /**
+     * Create and populate list of restaurants
+     */
+    private void createAndPopulateRestaurantsList() {
+
+        String[] visibleMatrixFields = new String[]{"name", "website", "phone"};
+        int[] visibleFieldsMappedToResources = new int[]{R.id.contact_name, R.id.contact_website, R.id.contact_number};
+
+        createAndPopulateCursorWithRestaurantDetails();
+
+        SimpleCursorAdapter completeRestaurantListings = new SimpleCursorAdapter(
+                this, R.layout.restaurant_row, restaurantsCursor, visibleMatrixFields, visibleFieldsMappedToResources);
+
+        setListAdapter(completeRestaurantListings);
+    }
+
+
+    /**
+     * Create and populate cursor with restaurant details
+     */
+    private void createAndPopulateCursorWithRestaurantDetails(){
+
+        String[] columnsOfMatrix = new String[]{"_id", "name", "website", "phone"};
+
+        restaurantsCursor = new MatrixCursor(columnsOfMatrix);
+        startManagingCursor(restaurantsCursor);
+
+        addRowsToMatrixFromXMLStrings();
+    }
+
+
+    /**
+     * Populate cursor with restaurant rows derived from String resources
+     */
+    private void addRowsToMatrixFromXMLStrings() {
+
+        for (int key = 0; key < restaurantNames.length; key++) {
+
+            restaurantsCursor.addRow(new Object[]{key, restaurantNames[key], restaurantWebsite[key], restaurantPhone[key]});
         }
-        return cursor;
     }
 
 
