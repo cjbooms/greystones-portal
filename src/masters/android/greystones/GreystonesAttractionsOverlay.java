@@ -21,9 +21,9 @@ public class GreystonesAttractionsOverlay extends ItemizedOverlay {
     private ArrayList<OverlayItem> attractions = new ArrayList<OverlayItem>();
     Context mContext;
 
-/*    public GreystonesAttractionsOverlay(Drawable defaultMarker) {
+    public GreystonesAttractionsOverlay(Drawable defaultMarker) {
         super(boundCenterBottom(defaultMarker));
-    }*/
+    }
 
 
     public void addOverlay(OverlayItem overlay) {
@@ -43,7 +43,7 @@ public class GreystonesAttractionsOverlay extends ItemizedOverlay {
 
 
     public GreystonesAttractionsOverlay(Drawable defaultMarker, Context context) {
-        super(defaultMarker);
+        this(defaultMarker);
         mContext = context;
     }
 

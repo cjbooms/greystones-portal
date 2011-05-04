@@ -4,21 +4,49 @@
     <string name="app_name">Greystones Village App</string>
     <string-array name="homepage_menu">
         <item>Promotional Video</item>
-        <item>Restaurants</item>
-        <item>Sport</item>
         <item>Weather Forecast</item>
+        <item>Restaurants</item>
+        <item>Leisure Centre</item>
+        <item>Local Theatre</item>
         <item>Transport</item>
     </string-array>
     <string-array name="restaurant_names">
-        <item>The Three Q\'s</item>
+        <item>Backstage @ Bels</item>
+        <item>Bochelli\'s</item>
+        <item>Chakra by Jaipur</item>
+        <item>Homan\'s</item>
+        <item>Royal Park Chinese Restaurant</item>
+        <item>Scent Thai Restaurant</item>
+        <item>Summerville Country Cooking</item>
+        <item>The Happy Pear</item>
         <item>The Hungry Monk</item>
+        <item>Three Q\'s</item>
+        <item>Vino Pasta</item>
     </string-array>
     <string-array name="restaurant_numbers">
-        <item>012871111</item>
-        <item>012871111</item>
+        <item>+353 1 201-6990</item>
+        <item>+353 1 287-3625</item>
+        <item>+353 1 201-7222</item>
+        <item>+353 1 287-4463</item>
+        <item>+353 1 287-4041</item>
+        <item>+353 1 287-0668</item>
+        <item>+353 1 287-4228</item>
+        <item>+353 1 287-3655</item>
+        <item>+353 1 287-5759</item>
+        <item>+353 1 287-5477</item>
+        <item>+353 1 287-4807</item>
     </string-array>
     <string-array name="restaurant_websites">
-        <item>www.google.com</item>
-        <item>www.nytimes.com</item>
+        <item>www.bels.ie</item>
+        <item></item>
+        <item>www.jaipur.ie</item>
+        <item></item>
+        <item>www.royalpark.ie</item>
+        <item></item>
+        <item></item>
+        <item>www.thehappypear.ie</item>
+        <item>www.thehungrymonk.ie</item>
+        <item></item>
+        <item>www.vinopasta.ie</item>
     </string-array>
 </resources>

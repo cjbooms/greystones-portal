@@ -59,13 +59,13 @@ public class HomePage extends Activity implements View.OnClickListener, AdapterV
                 }
                 startActivity(i);
                 break;
-             case 1: startActivity(new Intent(this,Restaurants.class));
+             case 1: startActivity(new Intent(this,TabbedForecasts.class));
                 break;
-             case 2: startActivity(new Intent(this,TabbedForecasts.class));
+             case 2: startActivity(new Intent(this,TabbedRestaurants.class));
                  break;
              case 3: startActivity(new Intent(this,TabbedForecasts.class));
                  break;
-             case 4: startActivity(new Intent(this,InteractiveMap.class));
+             case 4: startActivity(new Intent(this,TabbedForecasts.class));
                  break;
          }
     }
