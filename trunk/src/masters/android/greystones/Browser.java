@@ -9,15 +9,20 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 
 /**
- * Created by IntelliJ IDEA.
- * User: conor
+ * Generic browser class to setup a zoomable webview for displaying web or image url's.
+ *
+ * @author Conor Gallagher
  * Date: 05/05/11
  * Time: 23:40
- * To change this template use File | Settings | File Templates.
  */
 public class Browser extends Activity {
     Alerts alerts;
 
+    /**
+     * Display a webview of the url passed in extras
+     *
+     * @param savedInstanceState
+     */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -27,16 +32,26 @@ public class Browser extends Activity {
         WebView browser = new WebView(this);
         setContentView(browser);
 
-        // Get Fruit Array Position and set fruit variables
+        // Get url from extras
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             url = extras.getString("address");
         }
+
+        // Make webview zoomable
         browser.getSettings().setBuiltInZoomControls(true);
+
+        // Load URL
         browser.loadUrl(url);
     }
 
 
+    /**
+     * Handle Android Menu button push
+     *
+     * @param menu
+     * @return result
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -44,6 +59,13 @@ public class Browser extends Activity {
         return true;
     }
 
+
+    /**
+     * Handle Android Menu button selection events
+     *
+     * @param item The button pushed
+     * @return result
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -63,6 +85,13 @@ public class Browser extends Activity {
         }
     }
 
+    /**
+     * Cascade through all activities and close on exit command
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == 99) {

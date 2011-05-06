@@ -6,38 +6,55 @@ import android.os.Bundle;
 import android.webkit.WebView;
 
 /**
- * Created by IntelliJ IDEA.
- * User: conor
+ * Generates the weather forecast for Greystones. Uses the mobile site of
+ * yr.no and parses and transforms the html into a phone friendly display
+ *
+ * @author Conor Gallagher
  * Date: 20/02/11
  * Time: 21:02
- * To change this template use File | Settings | File Templates.
  */
 public class WeatherForecast extends Activity {
 
+    /**
+     * The url of the raw weather resource
+     */
+    String url;
 
+    /**
+     * The HTML Parser and transformer used to filter weather content
+     */
+    WeatherParser weatherParser;
+
+
+    /**
+     * Create Weather Web View and populate with cleaned weather data
+     *
+     * @param savedInstanceState
+     */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String url =" ";
+        url =" ";
 
         // Create HTML Parser, used to filter content
-        WeatherParser weatherParser = new WeatherParser();
+        weatherParser = new WeatherParser();
 
+        // Create Webview
 		WebView browser=new WebView(this);
 		setContentView(browser);
 
-        // Get Fruit Array Position and set fruit variables
+        // Get url from extras
 		Bundle extras = getIntent().getExtras();
 		if(extras !=null)
 		{
 			url = extras.getString("forecast");
 		}
 
-
-        //String tabularData = weatherParser.WeatherParser("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
+        // Parse and transform HTML from weather resource
         String tabularData = weatherParser.ParseHtml(url);
-        browser.loadData(tabularData, "text/html", "utf-8");
 
+        //Display cleaned weather results in webview
+        browser.loadData(tabularData, "text/html", "utf-8");
 
 
     }

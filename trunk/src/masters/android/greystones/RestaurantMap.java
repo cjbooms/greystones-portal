@@ -51,8 +51,16 @@ public class RestaurantMap extends MapActivity {
         createAndPopulateRestuarantsOverlayForMap();
 
         mapOverlays.add(restaurantsOverlay);
+
+        mapView.getController().setCenter(new GeoPoint(53144441,-6062130));
+        mapView.getController().setZoom(20);
+
     }
 
+
+    /**
+     * Create a map overlay and populate with restaurant details
+     */
     private void createAndPopulateRestuarantsOverlayForMap() {
 
        Drawable drawable = this.getResources().getDrawable(R.drawable.drink);
@@ -62,9 +70,17 @@ public class RestaurantMap extends MapActivity {
        populateOverlayFromResources();
     }
 
+
+    /**
+     * Populate the map overlay with restaurant details from xml resource files
+     */
     private void populateOverlayFromResources() {
+
+        // Get restaurant descriptions from resources
         String[] restaurantNames = getResources().getStringArray(R.array.restaurant_names);
         String[] restaurantDescriptions = getResources().getStringArray(R.array.restaurant_websites);
+
+        // Get Geo coordinates from resources
         int[] xCoordinates= getResources().getIntArray(R.array.XCoordinates);
         int[] yCoordinates= getResources().getIntArray(R.array.YCoordinates);
 
@@ -75,9 +91,6 @@ public class RestaurantMap extends MapActivity {
             restaurantsOverlay.addOverlay(singleRestaurant);
 
         }
-
-
-
     }
 
 
