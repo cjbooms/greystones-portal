@@ -7,8 +7,9 @@
         <item>Weather Forecast</item>
         <item>Restaurants</item>
         <item>Leisure Centre</item>
-        <item>Local Theatre</item>
-        <item>Transport</item>
+        <item>Theatre Listings</item>
+        <item>Dart</item>
+        <item>Bus</item>
     </string-array>
     <string-array name="restaurant_names">
         <item>Backstage @ Bels</item>
@@ -24,29 +25,51 @@
         <item>Vino Pasta</item>
     </string-array>
     <string-array name="restaurant_numbers">
+        <!--Backstage @ Bels -->
         <item>+353 1 201-6990</item>
+        <!--Bochelli\'s-->
         <item>+353 1 287-3625</item>
+        <!--Chakra by Jaipur-->
         <item>+353 1 201-7222</item>
+        <!--Homan\'s-->
         <item>+353 1 287-4463</item>
+        <!--Royal Park Chinese Restaurant-->
         <item>+353 1 287-4041</item>
+        <!--Scent Thai Restaurant-->
         <item>+353 1 287-0668</item>
+        <!--Summerville Country Cooking-->
         <item>+353 1 287-4228</item>
+        <!--The Happy Pear-->
         <item>+353 1 287-3655</item>
+        <!--The Hungry Monk-->
         <item>+353 1 287-5759</item>
+        <!--Three Q\'s-->
         <item>+353 1 287-5477</item>
+        <!--Vino Pasta-->
         <item>+353 1 287-4807</item>
     </string-array>
     <string-array name="restaurant_websites">
+        <!--Backstage @ Bels -->
         <item>www.bels.ie</item>
+        <!--Bochelli\'s-->
         <item></item>
+        <!--Chakra by Jaipur-->
         <item>www.jaipur.ie</item>
+        <!--Homan\'s-->
         <item></item>
+        <!--Royal Park Chinese Restaurant-->
         <item>www.royalpark.ie</item>
+        <!--Scent Thai Restaurant-->
         <item></item>
+        <!--Summerville Country Cooking-->
         <item></item>
+        <!--The Happy Pear-->
         <item>www.thehappypear.ie</item>
+        <!--The Hungry Monk-->
         <item>www.thehungrymonk.ie</item>
+        <!--Three Q\'s-->
         <item></item>
+        <!--Vino Pasta-->
         <item>www.vinopasta.ie</item>
     </string-array>
 </resources>

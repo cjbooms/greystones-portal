@@ -1,6 +1,5 @@
 package masters.android.greystones;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import com.google.android.maps.ItemizedOverlay;
@@ -16,13 +15,15 @@ import java.util.ArrayList;
  * Time: 22:50
  * To change this template use File | Settings | File Templates.
  */
-public class GreystonesAttractionsOverlay extends ItemizedOverlay {
+public class RestaurantMapOverlay extends ItemizedOverlay {
 
     private ArrayList<OverlayItem> attractions = new ArrayList<OverlayItem>();
     Context mContext;
+    Alerts alerts;
 
-    public GreystonesAttractionsOverlay(Drawable defaultMarker) {
+    public RestaurantMapOverlay(Drawable defaultMarker) {
         super(boundCenterBottom(defaultMarker));
+        alerts = new Alerts();
     }
 
 
@@ -42,7 +43,7 @@ public class GreystonesAttractionsOverlay extends ItemizedOverlay {
     }
 
 
-    public GreystonesAttractionsOverlay(Drawable defaultMarker, Context context) {
+    public RestaurantMapOverlay(Drawable defaultMarker, Context context) {
         this(defaultMarker);
         mContext = context;
     }
@@ -50,10 +51,7 @@ public class GreystonesAttractionsOverlay extends ItemizedOverlay {
     @Override
     protected boolean onTap(int index) {
         OverlayItem item = attractions.get(index);
-        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
-        dialog.setTitle(item.getTitle());
-        dialog.setMessage(item.getSnippet());
-        dialog.show();
+        alerts.restaurantInfoAlert(mContext, item);
         return true;
     }
 

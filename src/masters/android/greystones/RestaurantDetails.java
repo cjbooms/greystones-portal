@@ -12,7 +12,7 @@ import android.widget.SimpleCursorAdapter;
  * Time: 02:16
  * To change this template use File | Settings | File Templates.
  */
-public class Restaurants extends ListActivity {
+public class RestaurantDetails extends ListActivity {
 
     /**
      * Restaurant Names
@@ -30,7 +30,7 @@ public class Restaurants extends ListActivity {
     private String[] restaurantWebsite;
 
     /**
-     * Cursor to Hold Restaurants
+     * Cursor to Hold RestaurantDetails
      */
     private  MatrixCursor restaurantsCursor;
 
@@ -50,7 +50,7 @@ public class Restaurants extends ListActivity {
 
 
     /**
-     * Create and populate list of restaurants
+     * Create and populate list of restaurant_details
      */
     private void createAndPopulateRestaurantsList() {
 
