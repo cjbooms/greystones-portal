@@ -1,15 +1,12 @@
 package masters.android.greystones;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.webkit.WebView;
-
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,12 +18,16 @@ import java.util.List;
 public class PromotionalVideo extends Activity {
 
 	WebView browser;
+    Alerts alerts;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-    	setContentView(R.layout.promotionalvideo);
+    	setContentView(R.layout.promotional_video);
+
+        alerts = new Alerts();
+
 		browser=(WebView)findViewById(R.id.promovideo);
 
         browser.getSettings().setPluginsEnabled(true);
@@ -40,6 +41,38 @@ public class PromotionalVideo extends Activity {
 
 	}
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.general_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+        case R.id.exit:
+             setResult(99);
+             this.finish();
+            return true;
+        case R.id.info:
+             alerts.applicationInfoAlert(this);
+            return true;
+        case R.id.home:
+             startActivityForResult(new Intent(this,HomePage.class), 99);
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            if (resultCode == 99) {
+                setResult(99);
+                this.finish();
+            }
+    }
 
 }

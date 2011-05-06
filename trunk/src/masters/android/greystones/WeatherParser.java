@@ -16,13 +16,13 @@ import java.net.URL;
  * Time: 23:52
  * To change this template use File | Settings | File Templates.
  */
-public class ParseHtml {
+public class WeatherParser {
 
     HtmlCleaner cleaner;
     CleanerProperties props;
 
 
-    public ParseHtml() {
+    public WeatherParser() {
         // create an instance of HtmlCleaner
         cleaner = new HtmlCleaner();
 
@@ -70,27 +70,5 @@ public class ParseHtml {
         return returnValue;
 }
 
-/*
-
-// optionally find parts of the DOM or modify some nodes
-TagNode[] myNodes = node.getElementsByXXX(...);
-// and/or
-Object[] myNodes = node.evaluateXPath(xPathExpression);
-// and/or
-aNode.removeFromTree();
-// and/or
-aNode.addAttribute(attName, attValue);
-// and/or
-aNode.removeAttribute(attName, attValue);
-// and/or
-cleaner.setInnerHtml(aNode, htmlContent);
-// and/or do some other tree manipulation/traversal
-
-// serialize a node to a file, output stream, DOM, JDom...
-new XXXSerializer(props).writeXmlXXX(aNode, ...);
-myJDom = new JDomSerializer(props, true).createJDom(aNode);
-myDom = new DomSerializer(props, true).createDOM(aNode);
-
-*/
 
 }

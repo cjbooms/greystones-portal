@@ -1,10 +1,12 @@
 package masters.android.greystones;
 
-import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TabHost;
 
 /**
@@ -14,11 +16,15 @@ import android.widget.TabHost;
  * Time: 23:29
  * To change this template use File | Settings | File Templates.
  */
-public class TabbedForecasts extends TabActivity {
+public class WeatherTabs extends TabActivity {
+
+    Alerts alerts;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forecast_tabs);
+        setContentView(R.layout.weather_tabs);
 
+        alerts = new Alerts();
        Resources res = getResources(); // Resource object to get Drawables
         TabHost tabHost = getTabHost();  // The activity TabHost
         TabHost.TabSpec spec;  // Resusable TabSpec for each tab
@@ -48,4 +54,40 @@ public class TabbedForecasts extends TabActivity {
         tabHost.setCurrentTab(0);
 
     }
+
+
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.general_menu, menu);
+    return true;
+}
+
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+    // Handle item selection
+    switch (item.getItemId()) {
+    case R.id.exit:
+         setResult(99);
+         this.finish();
+        return true;
+    case R.id.info:
+         alerts.applicationInfoAlert(this);
+        return true;
+    case R.id.home:
+         startActivityForResult(new Intent(this,HomePage.class), 99);
+        return true;
+    default:
+        return super.onOptionsItemSelected(item);
+    }
+}
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == 99) {
+            setResult(99);
+            this.finish();
+        }
+}
+
 }

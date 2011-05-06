@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="XCoordinates">
+        <!--Backstage @ Bels 53.145113,-6.063611-->
+        <item>53145113</item>
+        <!--Bochelli\'s 53.144801,-6.062994-->
+        <item>53144801</item>
+        <!--Chakra by Jaipur 53.144074,-6.062967-->
+        <item>53144074</item>
+        <!--Homan\'s 53.144264,-6.0622-->
+        <item>53144264</item>
+        <!--Royal Park Chinese Restaurant 53.144396,-6.062903-->
+        <item>53144396</item>
+        <!--Scent Thai Restaurant 53.143981,-6.061546-->
+        <item>53143981</item>
+        <!--Summerville Country Cooking 53.146812,-6.063262-->
+        <item>53146812</item>
+        <!--The Happy Pear 53.145425,-6.064357-->
+        <item>53145425</item>
+        <!--The Hungry Monk 53.144576,-6.062962-->
+        <item>53144576</item>
+        <!--Three Q\'s 53.144441,-6.06213-->
+        <item>53144441</item>
+        <!--Vino Pasta 53.14353,-6.060623-->
+        <item>53143530</item>
+    </integer-array>
+    <integer-array name="YCoordinates">
+        <!--Backstage @ Bels 53.145113,-6.063611-->
+        <item>-6063611</item>
+        <!--Bochelli\'s 53.144801,-6.062994-->
+        <item>-6062994</item>
+        <!--Chakra by Jaipur 53.144074,-6.062967-->
+        <item>-6062967</item>
+        <!--Homan\'s 53.144264,-6.0622-->
+        <item>-6062200</item>
+        <!--Royal Park Chinese Restaurant 53.144396,-6.062903-->
+        <item>-6062903</item>
+        <!--Scent Thai Restaurant 53.143981,-6.061546-->
+        <item>-6061546</item>
+        <!--Summerville Country Cooking 53.146812,-6.063262-->
+        <item>-6063262</item>
+        <!--The Happy Pear 53.145425,-6.064357-->
+        <item>-6064357</item>
+        <!--The Hungry Monk 53.144576,-6.062962-->
+        <item>-6062962</item>
+        <!--Three Q\'s 53.144441,-6.06213-->
+        <item>-6062130</item>
+        <!--Vino Pasta 53.14353,-6.060623-->
+        <item>-6060623</item>
+    </integer-array>
+</resources>

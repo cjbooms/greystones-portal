@@ -19,12 +19,12 @@ public class WeatherForecast extends Activity {
         super.onCreate(savedInstanceState);
 
         String url =" ";
+
         // Create HTML Parser, used to filter content
-        ParseHtml parseHtml = new ParseHtml();
+        WeatherParser weatherParser = new WeatherParser();
 
 		WebView browser=new WebView(this);
 		setContentView(browser);
-		//browser.loadUrl("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
 
         // Get Fruit Array Position and set fruit variables
 		Bundle extras = getIntent().getExtras();
@@ -34,19 +34,11 @@ public class WeatherForecast extends Activity {
 		}
 
 
-        //String tabularData = parseHtml.ParseHtml("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
-        String tabularData = parseHtml.ParseHtml(url);
+        //String tabularData = weatherParser.WeatherParser("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
+        String tabularData = weatherParser.ParseHtml(url);
         browser.loadData(tabularData, "text/html", "utf-8");
 
 
 
-        //browser.loadData();
-
-  /*     setContentView(R.layout.weatherforecast);
-        WebView webview;
-        webview = (WebView) findViewById(R.id.webview);
-        webview.getSettings().setJavaScriptEnabled(true);
-        webview.loadUrl("http://m.yr.no/place/Ireland/Leinster/Greystones/hour_by_hour.html");
-        */
     }
 }
