@@ -5,18 +5,26 @@ import android.content.Context;
 import com.google.android.maps.OverlayItem;
 
 /**
- * Created by IntelliJ IDEA.
- * User: conor
+ * Utility Class to Handle Printing of Common Alert Messages.
+ * @author Conor Gallagher
  * Date: 05/05/11
  * Time: 21:59
- * To change this template use File | Settings | File Templates.
  */
 public class Alerts {
 
+    /**
+     * Default Constructor
+     */
     public Alerts() {
     }
 
-        protected boolean applicationInfoAlert(Context ctx) {
+    /**
+     * Print basic application information
+     *
+     * @param ctx The context to display message
+     * @return true when finished
+     */
+    protected boolean applicationInfoAlert(Context ctx) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(ctx);
         dialog.setTitle("Greystones Portal - Version 1.0");
         dialog.setMessage("by Conor Gallagher");
@@ -24,6 +32,13 @@ public class Alerts {
         return true;
     }
 
+    /**
+     * Print details about the map location item
+     *
+     * @param item A map location item
+     * @param ctx The context to display message
+     * @return true when finished
+     */
     protected boolean restaurantInfoAlert(Context ctx, OverlayItem item) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(ctx);
         dialog.setTitle(item.getTitle());

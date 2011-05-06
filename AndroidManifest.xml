@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="masters.android.greystones">
+          package="masters.android.greystones"
+          android:versionCode="2"
+          android:versionName="1.0.1">
+    <uses-sdk android:minSdkVersion="8"/>
     <uses-permission android:name="android.permission.INTERNET" />
-    <application android:icon="@drawable/icon" android:label="Greystones Portal" android:debuggable="true" android:theme="@android:style/Theme">
+    <application android:icon="@drawable/icon" android:label="Greystones Portal" android:theme="@android:style/Theme">
         <uses-library android:name="com.google.android.maps" />
         <activity android:name=".HomePage"  android:screenOrientation="sensor">
             <intent-filter>
@@ -12,7 +15,6 @@
         </activity>
         <activity android:name=".WeatherForecast"/>
         <activity android:name=".WeatherTabs"/>
-        <activity android:name=".RestaurantTabs"/>
         <activity android:name=".RestaurantDetails"/>
         <activity android:name=".RestaurantMap">
            <intent-filter>
@@ -21,8 +23,7 @@
            </intent-filter>
         </activity>
         <activity android:name=".PromotionalVideo"/>
-        <activity android:name=".LeisureCentreTabs"/>
+        <activity android:name=".CustomizedTabbedView"/>
         <activity android:name=".Browser"/>
-        <activity android:name=".Image"/>
     </application>
 </manifest>

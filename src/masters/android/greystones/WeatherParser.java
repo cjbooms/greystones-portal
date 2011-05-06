@@ -10,18 +10,28 @@ import java.net.URL;
 
 
 /**
- * Created by IntelliJ IDEA.
- * User: conor
+ * Cleans and parses the HTML using a cleaner along with an XPATH expression
+ *
+ * @author Conor Gallagher
  * Date: 21/02/11
  * Time: 23:52
- * To change this template use File | Settings | File Templates.
  */
 public class WeatherParser {
 
+    /**
+     * The HTML cleaner object
+     */
     HtmlCleaner cleaner;
+
+    /**
+     * Cleaner properties
+     */
     CleanerProperties props;
 
 
+    /**
+     * Default constructor
+     */
     public WeatherParser() {
         // create an instance of HtmlCleaner
         cleaner = new HtmlCleaner();
@@ -31,27 +41,31 @@ public class WeatherParser {
     }
 
 
-
-// customize cleaner's behaviour with property setters
-//props.setXXX(...);
-
-// Clean HTML taken from simple string, file, URL, input stream,
-// input source or reader. Result is root node of created
-// tree-like structure. Single cleaner instance may be safely used
-// multiple times.
+    /**
+     * Parse HTML and run XPATH filtering and return cleaned formatted result in a string
+     * or default error message
+     *
+     * @param forecast The url of the HTML page to clean
+     * @return The cleaned weather data in String format
+     */
     public String ParseHtml(String forecast){
 
-        // Create Weather URL from passed forecast type. i.e today's / tomorrow's etc
-       // String webPage = "http://m.yr.no/place/Ireland/Wicklow/Greystones/hour_by_hour.html" + forecast + ".html";
         String returnValue = " ";
+
         try {
             URL url = new URL(forecast);
             TagNode node = cleaner.clean(url);
+
+            // Run XPATH expression to filter HTML
             Object[] all_nodes = node.evaluateXPath("//table");
 
+            //Check whether weather data is returned. Should be null in the last hour of every day.
             if (all_nodes.length > 0){
+
+                // Select the weather tagnode
                 TagNode weather_table_node = (TagNode) all_nodes[0];
 
+                //Convert tagnode to String
                 returnValue = new SimpleHtmlSerializer(props).getAsString(weather_table_node);
 
             }
@@ -61,11 +75,16 @@ public class WeatherParser {
 
             return returnValue;
 
-
         }
-        catch (MalformedURLException e) {}
-        catch (IOException e){}
-        catch (XPatherException e){}
+        catch (MalformedURLException e) {
+             e.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        catch (XPatherException e){
+            e.printStackTrace();
+        }
 
         return returnValue;
 }

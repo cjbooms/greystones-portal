@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.widget.SimpleCursorAdapter;
 
 /**
- * Created by IntelliJ IDEA.
- * User: conor
+ *Displays a s list of restaurant details and auto dials phone numbers / opens websites.
+ *
+ * @author Conor Gallagher
  * Date: 03/05/11
  * Time: 02:16
- * To change this template use File | Settings | File Templates.
  */
 public class RestaurantDetails extends ListActivity {
 
@@ -35,6 +35,11 @@ public class RestaurantDetails extends ListActivity {
     private  MatrixCursor restaurantsCursor;
 
 
+    /**
+     * Create Restaurant Details List
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
