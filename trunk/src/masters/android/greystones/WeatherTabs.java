@@ -121,7 +121,7 @@ public class WeatherTabs extends TabActivity {
                 this.finish();
                 return true;
             case R.id.info:
-                alerts.applicationInfoAlert(this);
+                alerts.generateInfoAlert(this,"weather");
                 return true;
             case R.id.home:
                 startActivityForResult(new Intent(this, HomePage.class), 99);

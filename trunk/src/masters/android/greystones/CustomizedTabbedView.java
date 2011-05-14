@@ -31,6 +31,10 @@ public class CustomizedTabbedView extends TabActivity {
      */
     Alerts alerts;
 
+    /**
+     * Alert to Display
+     */
+    String alertMes;
 
     /**
      * Class to display the separate tabs
@@ -62,10 +66,15 @@ public class CustomizedTabbedView extends TabActivity {
         if (activityToLaunch != null){
 
             if (activityToLaunch.equalsIgnoreCase("leisure")) {
+                alertMes = "default";
                 startLeisureCentreTabs();
 
             } else if (activityToLaunch.equalsIgnoreCase("restaurants")) {
+                alertMes = "restaurants";
                 startRestaurantTabs();
+            } else if  (activityToLaunch.equalsIgnoreCase("dart")){
+                alertMes = "default";
+                startDartTabs();
             } else {
                 this.finish();
             }
@@ -75,6 +84,26 @@ public class CustomizedTabbedView extends TabActivity {
 
 
     }
+
+    /**
+     * Populate a Tab View with Dart Information.
+     * First tab to display Mon to Friday Timetables
+     * Second tab to display Sunday Timetables
+     */
+    private void startDartTabs() {
+        setContentView(R.layout.leisure_centre_tabs);
+        mTabHost = (TabHost) findViewById(android.R.id.tabhost);
+        mTabHost.getTabWidget().setDividerDrawable(R.drawable.tab_divider);
+
+        Intent intent = new Intent().setClass(this, Browser.class);
+
+        intent.putExtra("address", "file:///android_res/drawable/dartmonsat.png");
+        setupTab(new TextView(this), "Mon - Sat", intent);
+
+        intent.putExtra("address", "file:///android_res/drawable/dartsun.png");
+        setupTab(new TextView(this), "Sun", intent);
+
+        mTabHost.setCurrentTab(0);    }
 
 
     /**
@@ -181,7 +210,7 @@ public class CustomizedTabbedView extends TabActivity {
                 this.finish();
                 return true;
             case R.id.info:
-                alerts.applicationInfoAlert(this);
+                alerts.generateInfoAlert(this,alertMes);
                 return true;
             case R.id.home:
                 startActivityForResult(new Intent(this, HomePage.class), 99);

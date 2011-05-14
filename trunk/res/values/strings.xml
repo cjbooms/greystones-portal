@@ -2,6 +2,10 @@
 <resources>
     <string name="welcome">Welcome to Greystones!</string>
     <string name="app_name">Greystones Village App</string>
+    <string name="home_page">Oil Painting titled \"Greystones Harbour\" courtesy of Niamh Darcy. \nSee Colours in Motion: \nhttp://niamhdarcy.com/</string>
+    <string name="weather_page">Weather Data taken from yr.no See: http://www.yr.no/</string>
+    <string name="restaurant_page">Tap on phone number to auto-dial restaurant. Tap on website URL to launch external browser.</string>
+    <string name="generic_page"> </string>
     <string-array name="homepage_menu">
         <item>Promotional Video</item>
         <item>Weather Forecast</item>
