@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 /**
@@ -41,6 +42,10 @@ public class Browser extends Activity {
         // Make webview zoomable
         browser.getSettings().setBuiltInZoomControls(true);
 
+        // Set Zoom level
+        browser.getSettings().setLoadWithOverviewMode(true);
+        browser.getSettings().setUseWideViewPort(true);
+
         // Load URL
         browser.loadUrl(url);
     }
@@ -75,7 +80,7 @@ public class Browser extends Activity {
                 this.finish();
                 return true;
             case R.id.info:
-                alerts.applicationInfoAlert(this);
+                alerts.generateInfoAlert(this,"default");
                 return true;
             case R.id.home:
                 startActivityForResult(new Intent(this, HomePage.class), 99);

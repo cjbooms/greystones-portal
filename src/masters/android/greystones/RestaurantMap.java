@@ -1,7 +1,11 @@
 package masters.android.greystones;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import com.google.android.maps.*;
 
 import java.util.List;
@@ -18,16 +22,21 @@ public class RestaurantMap extends MapActivity {
     /**
      * The map containing restaurant locations
      */
-      private MapView mapView;
+     private MapView mapView;
 
+     /**
+     * Utility Class To Handle Alerts
+     */
+    Alerts alerts;
 
     /**
      * The map overlay containing restaurant locations
      */
     private RestaurantMapOverlay restaurantsOverlay;
 
+
     /**
-     *
+     * Create Map View
      * @param savedInstanceState
      */
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,7 @@ public class RestaurantMap extends MapActivity {
 
         mapView.getController().setCenter(new GeoPoint(53144441,-6062130));
         mapView.getController().setZoom(20);
+        mapView.setSatellite(false);
 
     }
 
@@ -64,8 +74,9 @@ public class RestaurantMap extends MapActivity {
     private void createAndPopulateRestuarantsOverlayForMap() {
 
        Drawable drawable = this.getResources().getDrawable(R.drawable.drink);
+       Drawable selected = this.getResources().getDrawable(R.drawable.drinkgreen);
 
-       restaurantsOverlay = new RestaurantMapOverlay(drawable, this);
+       restaurantsOverlay = new RestaurantMapOverlay(drawable, this, selected);
 
        populateOverlayFromResources();
     }
@@ -78,7 +89,7 @@ public class RestaurantMap extends MapActivity {
 
         // Get restaurant descriptions from resources
         String[] restaurantNames = getResources().getStringArray(R.array.restaurant_names);
-        String[] restaurantDescriptions = getResources().getStringArray(R.array.restaurant_websites);
+        String[] restaurantDescriptions = getResources().getStringArray(R.array.restaurant_numbers);
 
         // Get Geo coordinates from resources
         int[] xCoordinates= getResources().getIntArray(R.array.XCoordinates);
@@ -104,6 +115,56 @@ public class RestaurantMap extends MapActivity {
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
+   /**
+     * Handle Android Menu button push
+     *
+     * @param menu
+     * @return result
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.map_menu, menu);
 
+        return true;
+    }
+
+ @Override
+
+public boolean onPrepareOptionsMenu(Menu menu) {
+
+    menu.findItem(R.id.map).setVisible(mapView.isSatellite());
+    menu.findItem(R.id.satellite).setVisible(!mapView.isSatellite());
+
+    return true;
+
+}
+    /**
+     * Handle Android Menu button selection events
+     *
+     * @param item The button pushed
+     * @return result
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.exit:
+                setResult(99);
+                this.finish();
+                return true;
+            case R.id.home:
+                startActivityForResult(new Intent(this, HomePage.class), 99);
+                return true;
+            case R.id.satellite:
+                 mapView.setSatellite(true);
+                 return true;
+            case R.id.map:
+                 mapView.setSatellite(false);
+                 return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }

@@ -74,7 +74,7 @@ public class PromotionalVideo extends Activity {
                 this.finish();
                 return true;
             case R.id.info:
-                alerts.applicationInfoAlert(this);
+                alerts.generateInfoAlert(this,"default");
                 return true;
             case R.id.home:
                 startActivityForResult(new Intent(this, HomePage.class), 99);

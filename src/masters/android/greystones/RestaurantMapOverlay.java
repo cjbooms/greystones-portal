@@ -28,18 +28,29 @@ public class RestaurantMapOverlay extends ItemizedOverlay {
     Context mContext;
 
     /**
+     * Currently Selected marker
+     */
+    int selectedItem;
+
+    Drawable defaultMarker;
+
+    Drawable selectedMarker;
+
+    /**
      * Utility Class To Handle Alerts
      */
     Alerts alerts;
 
-    /**
+/*    *//**
      * Default Constructor
      * @param defaultMarker
-     */
+     *//*
     public RestaurantMapOverlay(Drawable defaultMarker) {
         super(boundCenterBottom(defaultMarker));
         alerts = new Alerts();
-    }
+        selectedItem = 0;
+        this.defaultMarker =defaultMarker;
+    }*/
 
     /**
      * Add marker to collection
@@ -66,11 +77,21 @@ public class RestaurantMapOverlay extends ItemizedOverlay {
      * Constructor with marker and context. Chained constructor
      * @param defaultMarker
      * @param context
+     * @param selectedMarker
      */
-    public RestaurantMapOverlay(Drawable defaultMarker, Context context) {
-        this(defaultMarker);
+    public RestaurantMapOverlay(Drawable defaultMarker, Context context, Drawable selectedMarker) {
+        //this(defaultMarker);
+        super(boundCenterBottom(defaultMarker));
+        alerts = new Alerts();
+        selectedItem = 0;
+        this.defaultMarker = defaultMarker;
         mContext = context;
+        this.selectedMarker = selectedMarker;
+        selectedMarker.setBounds(0, 0, selectedMarker.getIntrinsicWidth(), selectedMarker.getIntrinsicHeight());
+        boundCenterBottom(selectedMarker);
+
     }
+
 
     /**
      * Handles tap on markers and generates alert message
@@ -82,6 +103,10 @@ public class RestaurantMapOverlay extends ItemizedOverlay {
     protected boolean onTap(int index) {
         OverlayItem item = attractions.get(index);
         alerts.restaurantInfoAlert(mContext, item);
+        attractions.get(selectedItem).setMarker(defaultMarker);
+        selectedItem = index;
+        attractions.get(index).setMarker(selectedMarker);
+        populate();
         return true;
     }
 

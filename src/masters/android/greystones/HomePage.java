@@ -80,8 +80,9 @@ public class HomePage extends Activity implements AdapterView.OnItemClickListene
              // Launch Theatre Listings
              case 4: startActivityForResult(new Intent(this, Browser.class).putExtra("address", "http://www.greystonestheatre.com/listings/listings.html"), 99);
                  break;
-             // Launch Dart Website
-             case 5: startActivityForResult(new Intent(this, Browser.class).putExtra("address", "http://www.irishrail.ie/home/"), 99);
+             // Launch Dart Details
+             case 5: startActivityForResult(new Intent(this, CustomizedTabbedView.class).putExtra("activity","dart"), 99);
+             //case 5: startActivityForResult(new Intent(this, Browser.class).putExtra("address", "http://www.irishrail.ie/home/"), 99);
                  break;
              //Launch Dublin Bus Timetables
              case 6: startActivityForResult(new Intent(this, Browser.class).putExtra("address", "http://www.dublinbus.ie/en/Your-Journey1/Timetables/All-Timetables/84-/"), 99);
@@ -136,7 +137,7 @@ public class HomePage extends Activity implements AdapterView.OnItemClickListene
              this.finish();
             return true;
         case R.id.info:
-             alerts.applicationInfoAlert(this);
+             alerts.generateInfoAlert(this,"home");
             return true;
         default:
             return super.onOptionsItemSelected(item);
